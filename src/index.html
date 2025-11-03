@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>randomfood</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <section class="soupcontainer">
+      <h1>鍋のスープ</h1>
+      <p id="soupResult">?</p>
+    </section>
+    <button id="soupdecide">決めてもらう</button>
+
+    <section class="foodcontainer">
+      <h1>鍋の具材</h1>
+      <p id="foodResult">?</p>
+    </section>
+    <button id="fooddecide">決めてもらう</button>
+
+
+    <input id="inputText" type="text">
+    <button onclick="addOption()">あるよ</button>
+    <div class="ourstock">
+      <h2>冷蔵庫にあるもの一覧</h2>
+      <p id="stockresult">?</p>
+    </div>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

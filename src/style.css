@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+main {
+  width: 50vh;
+  margin: 32px auto;
+}
+
+section {
+  border: 4px double gray;
+  border-radius: 30%;
+  text-align: center;
+  color: black;
+}
+
+.soupcontainer {
+  background-color: antiquewhite;
+}
+
+.foodcontainer {
+  background-color: burlywood;
+}
+h1 {
+  margin: 0;
+  border-bottom: 2
+}
+
+.ourstock {
+  text-align:center;
+  border: 2px  solid gray;
+}
