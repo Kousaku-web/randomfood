@@ -1,4 +1,5 @@
 'use strict'
+{
 
 // スープを決める
 const soup = ["カレー", "キムチ", "ごま豆乳", "みそ", "ちゃんこ風"];
@@ -19,7 +20,6 @@ document.getElementById("addfood").addEventListener ("click", function () {
   ourstock.push(text);
   createList();
   document.getElementById("inputText").value = "";
-  // document.getElementById("stockresult").textContent=food;
 });
 
  
@@ -42,27 +42,47 @@ function createList () {
       foodlist.appendChild(stockfood);
       list.appendChild(foodlist);
     });
+}
+
+
+// 配列をシャッフルして返す関数を定義しておく
+    function shuffle (array) {
+    const newArray = [...array];
+    for (let i = newArray.length-1; i > 0; i --) {
+    const j  = Math.floor(Math.random() * (i+1));
+    [newArray[i],newArray[j]] = [newArray[j],newArray[i]] ;}
+    return newArray;
   }
 
-
-  
+// 配列からランダム番目までを切り取って返す関数
+    function getRandomSubset(array) {
+    const shuffled = shuffle(array);
+    const randomCount = Math.floor(Math.random() * array.length) + 1;
+    return shuffled.slice(0, randomCount);
+    }
 
 // 具材を決める
 document.getElementById("fooddecide").addEventListener ("click", function() {
+  
   // チェックがついたものを候補の配列に入れる
-
-  const candidates = [];
   const checkboxes = document.querySelectorAll("#candidateList input[type='checkbox']");
+  const candidates = [];
+
   checkboxes.forEach ((box) => {
     if (box.checked) {
       const index =box.dataset.index;
       candidates.push(ourstock[index]);
     }
   });
-  if (candidates.length === 0){
-    document.getElementById("foodResult").textContent="冷蔵庫に何もありません";
+    
+    if (candidates.length === 0){
+    document.getElementById("foodResult").textContent="鍋の具材になりそうなものはありません";
     return;
   }
-  const i =Math.floor(Math.random() * candidates.length) ;
-  document.getElementById("foodResult").textContent=candidates[i];
-});
+
+    const randomizedFoods = getRandomSubset(candidates);
+    document.getElementById("foodResult").textContent= randomizedFoods.join("、");
+  });
+  
+
+}
